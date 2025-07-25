@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Sleep & Recovery Guide for PCOD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c143c;
+            color: #e0e7ff;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .checklist-item {
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        .checklist-item:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        .checklist-item.completed {
+            background-color: rgba(74, 222, 128, 0.2);
+            text-decoration: line-through;
+            color: #a7f3d0;
+        }
+        .checklist-item .icon {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+        .calculator-input {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-12">
+            <i class="fas fa-moon text-5xl text-yellow-300 mb-4"></i>
+            <h1 class="text-4xl font-bold text-white">Your Sleep & Recovery Guide</h1>
+            <p class="text-lg text-indigo-200 mt-2">Harness the power of sleep to balance your hormones.</p>
+        </header>
+
+        <!-- Why Sleep Matters -->
+        <div class="card p-6 md:p-8 mb-12 text-center">
+            <h2 class="text-2xl font-bold text-white mb-4">Why Sleep is Your Superpower for PCOD</h2>
+            <p class="text-indigo-200 leading-relaxed max-w-3xl mx-auto">
+                Quality sleep is not a luxury—it's essential for managing PCOD. Getting 7-9 hours of consistent sleep helps to:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                <div class="text-center">
+                    <i class="fas fa-bolt text-3xl text-yellow-400 mb-2"></i>
+                    <h3 class="font-semibold text-white">Lower Insulin Resistance</h3>
+                    <p class="text-sm text-indigo-300">Improves how your body uses insulin.</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-shield-alt text-3xl text-green-400 mb-2"></i>
+                    <h3 class="font-semibold text-white">Reduce Cortisol</h3>
+                    <p class="text-sm text-indigo-300">Decreases the stress hormone that affects weight.</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-balance-scale text-3xl text-blue-400 mb-2"></i>
+                    <h3 class="font-semibold text-white">Balance Hunger Hormones</h3>
+                    <p class="text-sm text-indigo-300">Controls cravings by regulating ghrelin and leptin.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Routines -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <!-- Evening Routine -->
+            <div class="card p-6 md:p-8">
+                <h3 class="text-xl font-bold text-white mb-4 text-center"><i class="fas fa-bed mr-2"></i>Your Perfect Evening Routine</h3>
+                <div id="evening-checklist" class="space-y-3">
+                    <div class="checklist-item" onclick="toggleComplete(this)">
+                        <i class="far fa-circle icon"></i><span>Turn off screens 1 hour before bed</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleComplete(this)">
+                        <i class="far fa-circle icon"></i><span>Dim the lights to create a calm mood</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleComplete(this)">
+                        <i class="far fa-circle icon"></i><span>Drink a warm, caffeine-free tea</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleComplete(this)">
+                        <i class="far fa-circle icon"></i><span>Read a book or listen to calming music</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleComplete(this)">
+                        <i class="far fa-circle icon"></i><span>Do 5-10 mins of light stretching</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Morning Routine -->
+            <div class="card p-6 md:p-8">
+                <h3 class="text-xl font-bold text-white mb-4 text-center"><i class="fas fa-sun mr-2"></i>Your Energizing Morning Routine</h3>
+                <div id="morning-checklist" class="space-y-3">
+                    <div class="checklist-item" onclick="toggleComplete(this)">
+                        <i class="far fa-circle icon"></i><span>Wake up at a consistent time (even weekends!)</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleComplete(this)">
+                        <i class="far fa-circle icon"></i><span>Avoid hitting the snooze button</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleComplete(this)">
+                        <i class="far fa-circle icon"></i><span>Get 10-15 mins of morning sunlight</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleComplete(this)">
+                        <i class="far fa-circle icon"></i><span>Drink a full glass of water</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleComplete(this)">
+                        <i class="far fa-circle icon"></i><span>Eat a protein-rich breakfast within 90 mins</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bedtime Calculator -->
+        <div class="card p-6 md:p-8">
+            <h2 class="text-2xl font-bold text-white mb-6 text-center">Calculate Your Perfect Bedtime</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="text-center">
+                    <label for="wake-up-time" class="block mb-2 font-semibold">I want to wake up at:</label>
+                    <input type="time" id="wake-up-time" class="calculator-input" value="06:30" onchange="calculateBedtime()">
+                </div>
+                <div class="text-center">
+                    <p class="mb-2 font-semibold">You should aim to be asleep by:</p>
+                    <div id="bedtime-result" class="text-2xl font-bold text-yellow-300 p-3 bg-indigo-900 rounded-lg">
+                        10:30 PM - 11:30 PM
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleComplete(element) {
+            element.classList.toggle('completed');
+            const icon = element.querySelector('.icon');
+            if (element.classList.contains('completed')) {
+                icon.classList.remove('fa-circle');
+                icon.classList.add('fa-check-circle');
+            } else {
+                icon.classList.remove('fa-check-circle');
+                icon.classList.add('fa-circle');
+            }
+        }
+
+        function calculateBedtime() {
+            const wakeUpInput = document.getElementById('wake-up-time');
+            const resultDiv = document.getElementById('bedtime-result');
+            
+            if (!wakeUpInput.value) return;
+
+            const [hours, minutes] = wakeUpInput.value.split(':').map(Number);
+            
+            const wakeUpDate = new Date();
+            wakeUpDate.setHours(hours, minutes, 0, 0);
+
+            const idealBedtime = new Date(wakeUpDate.getTime() - 8 * 60 * 60 * 1000); // 8 hours before
+            const earliestBedtime = new Date(wakeUpDate.getTime() - 9 * 60 * 60 * 1000); // 9 hours before
+
+            const formatTime = (date) => {
+                return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+            };
+
+            resultDiv.textContent = `${formatTime(earliestBedtime)} - ${formatTime(idealBedtime)}`;
+        }
+        
+        // Initial calculation on load
+        window.onload = calculateBedtime;
+
+    </script>
+
+</body>
+</html>
